@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import './App.css';
@@ -5,15 +6,14 @@ import Character from './components/Character.js'
 import styled from 'styled-components'
 
 
-
 const Title = styled.h1`
   font-size: 60px;
-  color: #f94144;
+  color: #0466c8;
   :hover {
-       background-color: yellow;
+       background-color: #90be6d;
        transition:  2s;
   }
-`;
+`
 
 const App = () => {
   const [data, setData] = useState([])
@@ -22,17 +22,11 @@ const App = () => {
     .then((res)=>{
       setData(res.data)
     })
-    .catch()
+    .catch((err) => {
+      console.log(err);
+    });
   },[])
   
-
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
-
-  // Fetch characters from the API in an effect hook. Remember, anytime you have a 
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
-
   return (
     <div className="App">
       <Title className="Header">React Wars ></Title>
@@ -42,3 +36,11 @@ const App = () => {
 }
 
 export default App;
+
+
+  // Try to think through what state you'll need for this app before starting. Then build out
+  // the state properties here.
+
+  // Fetch characters from the API in an effect hook. Remember, anytime you have a 
+  // side effect in a component, you want to think about which state and/or props it should
+  // sync up with, if any.
